@@ -79,7 +79,8 @@ svg.ic { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width
 .depts .wrap { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: thin; }
 .depts button { flex: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 12px 9px; font-weight: 500; font-size: 0.88rem; white-space: nowrap; color: var(--ink); }
 .depts button:hover { color: var(--accent); }
-.depts button[aria-current="true"] { border-bottom-color: var(--accent); font-weight: 600; }
+.depts button[aria-current="true"] { border-bottom-color: var(--navc, var(--accent)); font-weight: 600; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--dh) 65% 48%); margin-right: 7px; vertical-align: 1px; }
 .depts button.deal { color: var(--accent); font-weight: 600; }
 
 /* shared buttons */
@@ -95,6 +96,7 @@ main { padding-block: 20px 64px; min-height: 60vh; }
 .crumbs button { background: none; border: 0; padding: 0; color: var(--accent); }
 .crumbs button:hover { text-decoration: underline; }
 h1.title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.1; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h1.title .tchip { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: hsl(var(--dh) 80% 94%); color: hsl(var(--dh) 65% 36%); font-size: 1.4rem; vertical-align: middle; margin-right: 10px; }
 .sub { color: var(--muted); margin: 4px 0 0; font-size: 0.9rem; }
 .notice { margin: 12px 0 0; padding: 8px 12px; border-radius: 8px; background: var(--warn-soft); color: var(--warn); font-size: 0.85rem; }
 
@@ -109,7 +111,7 @@ h2.sec { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem;
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 12px; text-align: left; display: grid; gap: 10px; align-content: start; min-width: 0; }
 .tile { box-shadow: 0 1px 2px rgba(18, 24, 38, 0.04); }
 .tile:hover { border-color: var(--accent); }
-.tile .ico { width: 44px; height: 44px; border-radius: 10px; background: var(--tile); color: var(--accent); display: grid; place-items: center; font-size: 1.5rem; }
+.tile .ico { width: 44px; height: 44px; border-radius: 10px; background: hsl(var(--dh, 215) 80% 94%); color: hsl(var(--dh, 215) 65% 36%); display: grid; place-items: center; font-size: 1.5rem; }
 .tile b { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; line-height: 1.2; }
 .tile small { color: var(--muted); font-size: 0.78rem; }
 .btiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
@@ -135,7 +137,7 @@ h2.sec { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem;
 .facet { display: grid; gap: 1px; }
 .facet button { display: flex; justify-content: space-between; gap: 8px; text-align: left; background: none; border: 0; padding: 5px 8px; margin-inline: -8px; border-radius: 6px; font-size: 0.9rem; }
 .facet button:hover { background: var(--tile); }
-.facet button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.facet button[aria-pressed="true"] { background: var(--fbg, var(--accent-soft)); color: var(--fcol, var(--accent)); font-weight: 600; }
 .facet span { color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
 .chk { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 0.9rem; }
 .chk input { width: 16px; height: 16px; accent-color: var(--accent); flex: none; }
@@ -153,7 +155,7 @@ h2.sec { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem;
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
 .card { box-shadow: 0 1px 2px rgba(18, 24, 38, 0.04); }
 .card:hover { border-color: var(--accent); box-shadow: 0 6px 18px rgba(18, 24, 38, 0.08); }
-.ph { aspect-ratio: 4 / 3; max-width: 100%; background: var(--tile); color: var(--muted); display: grid; place-items: center; position: relative; font-size: clamp(2.2rem, 7vw, 3.4rem); }
+.ph { aspect-ratio: 4 / 3; max-width: 100%; background: hsl(var(--dh, 215) 60% 95%); color: hsl(var(--dh, 215) 55% 38%); display: grid; place-items: center; position: relative; font-size: clamp(2.2rem, 7vw, 3.4rem); }
 .ph .brand { position: absolute; left: 10px; bottom: 8px; font-family: var(--font-display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .ph .tags { position: absolute; left: 8px; top: 8px; display: flex; gap: 4px; }
 .tag { font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.03em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); }
@@ -301,6 +303,7 @@ var P = {
   bag: '<path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
   bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'
 };
+function hue(d) { return Math.round((d * 137.508 + 12) % 360); }
 function ic(n) { return '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">' + (P[n] || P.box) + "</svg>"; }
 
 var DEPTS = DATA.depts, BRANDS = DATA.brands;
@@ -383,7 +386,7 @@ function go(view, o) {
 
 function renderNav() {
   var h = '<button type="button" data-go="home"' + (S.view === "home" ? ' aria-current="true"' : "") + ">All departments</button>";
-  DEPTS.forEach(function (d, i) { h += '<button type="button" data-dept="' + i + '"' + (S.view === "dept" && S.d === i ? ' aria-current="true"' : "") + ">" + esc(d.name) + "</button>"; });
+  DEPTS.forEach(function (d, i) { h += '<button type="button" style="--dh:' + hue(i) + ';--navc:hsl(' + hue(i) + ' 65% 45%)" data-dept="' + i + '"' + (S.view === "dept" && S.d === i ? ' aria-current="true"' : "") + '><i class="dot"></i>' + esc(d.name) + "</button>"; });
   h += '<button type="button" data-go="brands"' + (S.view === "brands" || S.view === "brand" ? ' aria-current="true"' : "") + ">Shop by brand</button>";
   h += '<button type="button" class="deal" data-flag="c"' + (S.view === "flag" && S.flag === "c" ? ' aria-current="true"' : "") + ">Clearance</button>";
   h += '<button type="button" class="deal" data-flag="r"' + (S.view === "flag" && S.flag === "r" ? ' aria-current="true"' : "") + ">Refurbished</button>";
@@ -400,7 +403,7 @@ function card(it) {
     ? '<div class="stepper"><button type="button" data-dec="' + esc(it.id) + '" aria-label="Remove one">&minus;</button><span>' + n + ' in cart</span><button type="button" data-inc="' + esc(it.id) + '" aria-label="Add one">+</button></div>'
     : '<button type="button" class="btn block" data-add="' + esc(it.id) + '">' + ic("bag") + " Add to cart</button>";
   var bn = BRANDS[it.b] === "Other" ? "" : BRANDS[it.b];
-  return '<article class="card">' +
+  return '<article class="card" style="--dh:' + hue(it.d) + '">' +
     '<div class="ph">' + ic(DEPTS[it.d].icon) + '<div class="tags">' + tags + "</div>" + (bn ? '<span class="brand">' + esc(bn) + "</span>" : "") + "</div>" +
     '<div class="cbody"><div class="sku">' + esc(it.sku) + "</div>" +
     '<h3 title="' + esc(it.t + (it.sp ? " - " + it.sp : "")) + '">' + esc(it.t) + "</h3>" +
@@ -435,7 +438,7 @@ function renderHome() {
     '<span class="deco">' + ic("cpu") + "</span></section>";
   h += '<h2 class="sec">Shop by department</h2><div class="tiles">';
   DEPTS.forEach(function (d, i) {
-    h += '<button type="button" class="tile" data-dept="' + i + '"><span class="ico">' + ic(d.icon) + "</span><b>" + esc(d.name) + "</b><small>" + counts[i] + " products</small></button>";
+    h += '<button type="button" class="tile" style="--dh:' + hue(i) + '" data-dept="' + i + '"><span class="ico">' + ic(d.icon) + "</span><b>" + esc(d.name) + "</b><small>" + counts[i] + " products</small></button>";
   });
   h += "</div>";
   h += '<h2 class="sec">Shop by brand</h2>' + brandTiles(brandStats().slice(0, 12)) + '<button type="button" class="btn ghost small" style="margin-top:12px" data-go="brands">See all brands</button>';
@@ -484,9 +487,10 @@ function renderList() {
 
   var shown = list.slice(0, S.limit);
   var active = S.facet >= 0 || bsel.length || S.inStock || S.min || S.max;
-  var h = '<p class="crumbs">' + crumb + "</p><h1 class=\"title\">" + esc(title) + "</h1>" + (sub ? '<p class="sub">' + sub + "</p>" : "") +
+  var dh = isDept ? hue(S.d) : null;
+  var h = '<p class="crumbs">' + crumb + "</p><h1 class=\"title\"" + (isDept ? ' style="--dh:' + dh + '"' : "") + ">" + (isDept ? '<span class="tchip">' + ic(DEPTS[S.d].icon) + "</span>" : "") + esc(title) + "</h1>" + (sub ? '<p class="sub">' + sub + "</p>" : "") +
     (note ? '<p class="notice">' + esc(note) + "</p>" : "") +
-    '<div class="shop"><aside class="filters' + (S.filtersOpen ? " open" : "") + '" id="filters" aria-label="Filters">' + f + "</aside><section>" +
+    '<div class="shop"' + (isDept ? ' style="--fbg:hsl(' + dh + ' 80% 94%);--fcol:hsl(' + dh + ' 65% 36%)"' : "") + '><aside class="filters' + (S.filtersOpen ? " open" : "") + '" id="filters" aria-label="Filters">' + f + "</aside><section>" +
     '<div class="bar"><button type="button" class="btn ghost small filtbtn" data-filt="1">Filters</button>' +
     '<span class="count" aria-live="polite">' + list.length.toLocaleString("en-ZA") + " product" + (list.length === 1 ? "" : "s") + "</span>" +
     (active ? '<button type="button" class="clear" data-clear="1">Clear filters</button>' : "") +
